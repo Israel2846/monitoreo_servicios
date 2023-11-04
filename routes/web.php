@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('estado_actual');
+});
+
+Route::controller(ServicioController::class)->group(function () {
+    Route::get('servicios', 'show')->name('servicios.show');
 });

@@ -16,6 +16,10 @@
 
 <body>
     @include('layout.nav')
+
+    <div class="ui segment container">
+        @yield('content')
+    </div>
 </body>
 
 </html>

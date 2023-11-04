@@ -2,6 +2,6 @@
 
 @section('title', 'index')
 
-@section('estado_actual')
+@section('content')
     <h1>Estado actual</h1>
 @endsection
