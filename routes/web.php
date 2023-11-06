@@ -21,4 +21,5 @@ Route::get('/', function () {
 Route::controller(ServicioController::class)->group(function () {
     Route::get('servicios', 'show')->name('servicios.show');
     Route::get('servicios/create', 'create')->name('servicios.create');
+    Route::post('servicios/create', 'store')->name('servicios.store');
 });
