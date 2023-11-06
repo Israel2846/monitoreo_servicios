@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class ServicioController extends Controller
 {
-    public function show()
+    public function index()
     {
-        return view('servicios.index');
+        $servicios = Servicio::orderBy('id', 'desc')->paginate();
+
+        return view('servicios.index', compact('servicios'));
     }
 
     public function create()
@@ -22,6 +24,6 @@ class ServicioController extends Controller
     {
         Servicio::create($request->all());
 
-        return redirect()->route('servicios.show');
+        return redirect()->route('servicios.index');
     }
 }
