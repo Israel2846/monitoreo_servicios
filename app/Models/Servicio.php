@@ -10,6 +10,8 @@ class Servicio extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     /* Relacion muchos a muchos */
     public function incidencias()
     {

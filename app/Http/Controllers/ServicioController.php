@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ServicioRequest;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 
 class ServicioController extends Controller
@@ -19,6 +20,8 @@ class ServicioController extends Controller
 
     public function store(ServicioRequest $request)
     {
-        return $request;
+        Servicio::create($request->all());
+
+        return redirect()->route('servicios.show');
     }
 }
