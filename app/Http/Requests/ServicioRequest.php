@@ -23,8 +23,8 @@ class ServicioRequest extends FormRequest
     {
         return [
             'nombre' => 'required',
-            'ip' => 'required',
-            'mac' => 'required',
+            'ip' => 'required|ip',
+            'mac' => 'required|mac_address',
         ];
     }
 }

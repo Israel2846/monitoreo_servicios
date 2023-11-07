@@ -26,4 +26,23 @@ class ServicioController extends Controller
 
         return redirect()->route('servicios.index');
     }
+
+    public function edit(Servicio $servicio)
+    {
+        return view('servicios.edit', compact('servicio'));
+    }
+
+    public function update(ServicioRequest $request, Servicio $servicio)
+    {
+        $servicio->update($request->all());
+
+        return redirect()->route('servicios.index');
+    }
+
+    public function destroy(Servicio $servicio)
+    {
+        $servicio->delete();
+
+        return redirect()->route('servicios.index');
+    }
 }

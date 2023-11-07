@@ -5,6 +5,7 @@
 @section('content')
     <form action="{{ route('servicios.store') }}" method="post" class="ui fluid form">
         @csrf
+        
         <div class="field">
             <label>Nombre del servicio</label>
             <input type="text" name="nombre" placeholder="Escribe aquí el nombre del servicio" value="{{ old('nombre') }}">
@@ -31,7 +32,7 @@
         </div>
 
         <div class="field">
-            <button type="submit" class="ui blue button">Alta</button>
+            <button type="submit" class="ui orange button">Alta</button>
         </div>
     </form>
 @endsection

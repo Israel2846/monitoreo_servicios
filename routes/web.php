@@ -21,5 +21,8 @@ Route::get('/', function () {
 Route::controller(ServicioController::class)->group(function () {
     Route::get('servicios', 'index')->name('servicios.index');
     Route::get('servicios/create', 'create')->name('servicios.create');
+    Route::get('servicios/edit/{servicio}', 'edit')->name('servicios.edit');
     Route::post('servicios/create', 'store')->name('servicios.store');
+    Route::put('servicios/{servicio}', 'update')->name('servicios.update');
+    Route::delete('servicios/{servicio}', 'destroy')->name('servicios.destroy');
 });

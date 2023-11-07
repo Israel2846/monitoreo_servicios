@@ -5,14 +5,15 @@
 @section('content')
 
     <h1>Servicios</h1>
-    <a class="ui blue button" href="{{ route('servicios.create') }}">Crear servicio</a>
+    <a class="ui orange button" href="{{ route('servicios.create') }}">Crear servicio</a>
 
-    <table class="ui blue table">
+    <table class="ui celled striped orange table">
         <thead>
             <tr>
                 <th>NOMBRE</th>
                 <th>IP</th>
                 <th>MAC</th>
+                <th>Seleccionar</th>
             </tr>
         </thead>
         <tbody>
@@ -21,11 +22,20 @@
                     <td>
                         {{ $servicio->nombre }}
                     </td>
-                    <td>
+                    <td class="collapsing">
                         {{ $servicio->ip }}
                     </td>
-                    <td>
+                    <td class="collapsing">
                         {{ $servicio->mac }}
+                    </td>
+                    <td class="collapsing">
+                        <a href="{{ route('servicios.edit', $servicio) }}" class="ui animated fade orange button"
+                            tabindex="0">
+                            <div class="visible content">Ver</div>
+                            <div class="hidden content">
+                                <i class="eye icon"></i>
+                            </div>
+                        </a>
                     </td>
                 </tr>
             @endforeach
