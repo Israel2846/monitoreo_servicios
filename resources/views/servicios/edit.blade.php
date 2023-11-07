@@ -37,13 +37,6 @@
 
         <div class="field">
             <button type="submit" class="ui orange button">Editar</button>
-
-            <form action="{{ route('servicios.destroy', $servicio) }}" method="post">
-                @csrf
-                @method('delete')
-
-                <button class="ui red button" type="submit">Eliminar</button>
-            </form>
         </div>
     </form>
 @endsection

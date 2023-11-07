@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('estado_actual');
-});
+})->name('estado_actual');
 
 Route::controller(ServicioController::class)->group(function () {
     Route::get('servicios', 'index')->name('servicios.index');
