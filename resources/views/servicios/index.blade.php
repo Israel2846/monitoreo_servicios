@@ -13,8 +13,8 @@
                 <th>NOMBRE</th>
                 <th>IP</th>
                 <th>MAC</th>
-                <th>Seleccionar</th>
-                <th>Eliminar</th>
+                <th>SELECCIONAR</th>
+                <th>ELIMINAR</th>
             </tr>
         </thead>
         <tbody>
@@ -29,8 +29,8 @@
                     <td class="collapsing">
                         {{ $servicio->mac }}
                     </td>
-                    <td class="collapsing">
-                        <a href="{{ route('servicios.edit', $servicio) }}" class="ui animated fade  circular orange button"
+                    <td class="collapsing" style="text-align: center">
+                        <a href="{{ route('servicios.edit', $servicio) }}" class="ui animated fade circular orange button"
                             tabindex="0">
                             <div class="visible content">Ver</div>
                             <div class="hidden content">
@@ -38,7 +38,7 @@
                             </div>
                         </a>
                     </td>
-                    <td class="collapsing">
+                    <td class="collapsing" style="text-align: center">
                         <form action="{{ route('servicios.destroy', $servicio) }}" method="post">
                             @csrf
                             @method('delete')

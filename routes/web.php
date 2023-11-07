@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('estado_actual');
 })->name('estado_actual');
+
+Route::get('estado', [EstadoController::class, 'enviarPing'])->name('enviar_ping');
 
 Route::controller(ServicioController::class)->group(function () {
     Route::get('servicios', 'index')->name('servicios.index');
