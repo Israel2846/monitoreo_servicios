@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
+use Psy\CodeCleaner\ReturnTypePass;
 
 class EstadoController extends Controller
 {
@@ -10,8 +12,17 @@ class EstadoController extends Controller
     {
         $ip = '192.168.41.1';
 
-        exec("ping $ip", $output);
+        exec("ping $ip", $salida);
 
-        dd($output);
+        $salida = array_map('utf8_encode', $salida);
+
+        $tiemposRestpuesta = array_map(function ($line) {
+            preg_match('/tiempo=(\d+)ms/', $line, $matches);
+            return isset($matches[1]) ? $matches[1] : null;
+        }, $salida);
+
+        $tiemposRestpuesta = array_values(array_filter($tiemposRestpuesta));
+
+        return response()->json($tiemposRestpuesta);
     }
 }
