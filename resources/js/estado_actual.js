@@ -1,17 +1,25 @@
-const $grafica = document.querySelector("#grafica");
+// const $grafica = document.querySelector("#TELMEX");
+const grafica = document.getElementById('TELMEX');
 const etiquetas = [1, 2, 3, 4]
 let datosTelmex;
+let background;
 
 setInterval(() => {
     $.ajax({
         type: 'GET',
         url: 'estado',
         success: function (datos) {
+            if (datos.tiempos[0] >= 5 | datos.tiempos[1] >= 5 | datos.tiempos[2] >= 5 | datos.tiempos[3] >= 5) {
+                background = 'rgba(255, 0, 0,';
+            } else {
+                background = 'rgba(0, 255, 0,';
+            }
+
             datosTelmex = {
-                label: "Telmex",
-                data: [datos[0], datos[1], datos[2], datos[3]],
-                backgroundColor: 'rgba(54, 162, 235, 0.1)',
-                borderColor: 'rgba(54, 162, 235, 1)',
+                label: datos.nombre,
+                data: [datos.tiempos[0], datos.tiempos[1], datos.tiempos[2], datos.tiempos[3]],
+                backgroundColor: background + '0.1)',
+                borderColor: background + '1)',
                 borderWidth: 1,
             };
 
@@ -24,7 +32,7 @@ setInterval(() => {
 }, 5000);
 
 function crearChart(etiquetas, datos) {
-    new Chart($grafica, {
+    new Chart(grafica, {
         type: 'line',
         data: {
             labels: etiquetas,

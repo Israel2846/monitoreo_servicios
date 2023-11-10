@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Servicio;
 use Exception;
 use Illuminate\Http\Request;
 use Psy\CodeCleaner\ReturnTypePass;
 
 class EstadoController extends Controller
 {
+    public function dashboard()
+    {
+        $servicios = Servicio::all();
+
+        return view('estado_actual', compact('servicios'));
+    }
+
+
     public function enviarPing()
     {
-        $ip = '192.168.41.1';
+        $servicio = Servicio::first();
+
+        $ip = $servicio->ip;
 
         exec("ping $ip", $salida);
 
@@ -23,6 +34,9 @@ class EstadoController extends Controller
 
         $tiemposRestpuesta = array_values(array_filter($tiemposRestpuesta));
 
-        return response()->json($tiemposRestpuesta);
+        return response()->json([
+            'nombre' => $servicio->nombre,
+            'tiempos' => $tiemposRestpuesta,
+        ]);
     }
 }

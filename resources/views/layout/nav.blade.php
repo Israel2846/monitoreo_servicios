@@ -1,5 +1,5 @@
 <nav class="ui secondary menu">
-    <a class="item {{ request()->routeIs('estado_actual') ? 'active' : '' }}" href="{{ route('estado_actual') }}">Estado
+    <a class="item {{ request()->routeIs('estado') ? 'active' : '' }}" href="{{ route('estados.dashboard') }}">Estado
         actual</a>
     <a class="item {{ request()->routeIs('servicios.*') ? 'active' : '' }}"
         href="{{ route('servicios.index') }}">Servicios</a>
