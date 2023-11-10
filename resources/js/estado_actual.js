@@ -1,29 +1,33 @@
 // const $grafica = document.querySelector("#TELMEX");
-const grafica = document.getElementById('TELMEX');
 const etiquetas = [1, 2, 3, 4]
-let datosTelmex;
+let datosGrafica;
 let background;
+let grafica
 
 setInterval(() => {
     $.ajax({
         type: 'GET',
         url: 'estado',
         success: function (datos) {
-            if (datos.tiempos[0] >= 5 | datos.tiempos[1] >= 5 | datos.tiempos[2] >= 5 | datos.tiempos[3] >= 5) {
-                background = 'rgba(255, 0, 0,';
-            } else {
-                background = 'rgba(0, 255, 0,';
+            for (let index = 0; index < datos.length; index++) {
+                grafica = document.getElementById(datos[index].nombre);
+
+                if (datos[index].tiempos[0] >= 6 | datos[index].tiempos[1] >= 6 | datos[index].tiempos[2] >= 6 | datos[index].tiempos[3] >= 6) {
+                    background = 'rgba(255, 0, 0,';
+                } else {
+                    background = 'rgba(0, 255, 0,';
+                }
+
+                datosGrafica = {
+                    label: datos[index].nombre,
+                    data: [datos[index].tiempos[0], datos[index].tiempos[1], datos[index].tiempos[2], datos[index].tiempos[3]],
+                    backgroundColor: background + '0.1)',
+                    borderColor: background + '1)',
+                    borderWidth: 1,
+                };
+
+                crearChart(etiquetas, datosGrafica);
             }
-
-            datosTelmex = {
-                label: datos.nombre,
-                data: [datos.tiempos[0], datos.tiempos[1], datos.tiempos[2], datos.tiempos[3]],
-                backgroundColor: background + '0.1)',
-                borderColor: background + '1)',
-                borderWidth: 1,
-            };
-
-            crearChart(etiquetas, datosTelmex);
         },
         error: function (error) {
             console.log(error);

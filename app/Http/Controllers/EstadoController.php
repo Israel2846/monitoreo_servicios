@@ -19,24 +19,25 @@ class EstadoController extends Controller
 
     public function enviarPing()
     {
-        $servicio = Servicio::first();
+        $servicios = Servicio::all();
 
-        $ip = $servicio->ip;
+        $lista_servicios = [];
 
-        exec("ping $ip", $salida);
+        foreach ($servicios as $servicio) {
+            $ping = "ping $servicio->ip";
 
-        $salida = array_map('utf8_encode', $salida);
+            $salida = shell_exec($ping);
 
-        $tiemposRestpuesta = array_map(function ($line) {
-            preg_match('/tiempo=(\d+)ms/', $line, $matches);
-            return isset($matches[1]) ? $matches[1] : null;
-        }, $salida);
+            preg_match_all('/tiempo=(\d+)ms/', $salida, $matches);
 
-        $tiemposRestpuesta = array_values(array_filter($tiemposRestpuesta));
+            $tiemposRespuesta = isset($matches[1]) ? $matches[1] : [];
 
-        return response()->json([
-            'nombre' => $servicio->nombre,
-            'tiempos' => $tiemposRestpuesta,
-        ]);
+            $lista_servicios[] = [
+                'nombre' => $servicio->nombre,
+                'tiempos' => $tiemposRespuesta,
+            ];
+        }
+
+        return response()->json($lista_servicios);
     }
 }
