@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\IncidenciaController;
 use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +32,8 @@ Route::controller(ServicioController::class)->group(function () {
     Route::post('servicios/create', 'store')->name('servicios.store');
     Route::put('servicios/{servicio}', 'update')->name('servicios.update');
     Route::delete('servicios/{servicio}', 'destroy')->name('servicios.destroy');
+});
+
+Route::controller(IncidenciaController::class)->group(function () {
+    Route::get('incidencia', 'mailAviso')->name('incidencia.mail_aviso');
 });
