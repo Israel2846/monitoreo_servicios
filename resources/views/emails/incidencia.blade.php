@@ -11,7 +11,7 @@
 <body>
     <h1>Correo de incidencia</h1>
 
-    <p><strong>Servicio: </strong>{{ $datos['nombre'] }}</p>
+    <p><strong>Se cayó un servicio</p>
 </body>
 
 </html>
