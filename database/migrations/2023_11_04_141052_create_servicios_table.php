@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nombre', 50)->unique(true);
             $table->string('ip');
             $table->string('mac');
+            $table->boolean('activo')->default(true);
 
             $table->timestamps();
         });

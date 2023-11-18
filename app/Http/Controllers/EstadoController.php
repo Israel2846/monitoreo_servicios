@@ -33,8 +33,10 @@ class EstadoController extends Controller
             $tiemposRespuesta = isset($matches[1]) ? $matches[1] : [];
 
             $lista_servicios[] = [
+                'id' => $servicio->id,
                 'nombre' => $servicio->nombre,
                 'tiempos' => $tiemposRespuesta,
+                'activo' => $servicio->activo,
             ];
         }
 

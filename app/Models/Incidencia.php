@@ -10,9 +10,9 @@ class Incidencia extends Model
 {
     use HasFactory;
 
-    /* Relación muchos a muchos */
+    /* Relación 1 a muchos inverso */
     public function servicios()
     {
-        return $this->belongsToMany(Servicio::class);
+        return $this->belongsTo(Servicio::class);
     }
 }

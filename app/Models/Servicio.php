@@ -38,9 +38,9 @@ class Servicio extends Model
         );
     }
 
-    /* Relacion muchos a muchos */
+    /* Relacion 1 a muchos */
     public function incidencias()
     {
-        return $this->belongsToMany(Incidencia::class);
+        return $this->hasMany(Incidencia::class);
     }
 }

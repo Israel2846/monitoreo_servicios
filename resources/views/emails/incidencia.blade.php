@@ -11,7 +11,9 @@
 <body>
     <h1>Correo de incidencia</h1>
 
-    <p><strong>Se cayó un servicio</p>
+    <p><strong>Se cayó el servicio {{ $datos['nombre'] }}</p>
+    <p><strong>Con IP {{ $datos['ip'] }}</p>
+    <p><strong>Con MAC {{ $datos['mac'] }}</p>
 </body>
 
 </html>

@@ -5,28 +5,39 @@ namespace App\Http\Controllers;
 use App\Mail\IncidenciaMailable;
 use App\Models\Incidencia;
 use App\Models\Servicio;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class IncidenciaController extends Controller
 {
-    public function mail()
+    public function mail($id)
     {
-        $servicio = Servicio::first();
+        $servicio = Servicio::find($id);
 
         Mail::to(['isrel.k40@gmail.com', 'israaacolin@gmail.com'])->send(new IncidenciaMailable($servicio));
 
         return 'Mensaje enviado con exito';
     }
 
-    public function store()
+    public function store($id)
     {
-        $incidencia = new Incidencia();
+        try {
+            $servicio = Servicio::find($id);
 
-        $incidencia->fecha = now();
+            $servicio->activo = false;
 
-        $incidencia->save();
+            $incidencia = new Incidencia();
 
-        $this->mail();
+            $incidencia->fecha = now();
+            $incidencia->servicio_id = $id;
+
+            $incidencia->save();
+            $servicio->save();
+
+            $this->mail($id);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 }
