@@ -45,12 +45,13 @@ function repeticiones() {
                 crearChart(etiquetas, datosGrafica);
             };
             console.log(perdidas);
+            setTimeout(repeticiones, 1000);
         },
         error: function (error) {
             console.log(error);
+            setTimeout(repeticiones, 1000);
         }
     });
-    setTimeout(repeticiones, 15000);
 }
 
 function crearChart(etiquetas, datos) {
