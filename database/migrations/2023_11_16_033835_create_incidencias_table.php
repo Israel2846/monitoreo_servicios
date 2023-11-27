@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('incidencias', function (Blueprint $table) {
             $table->id();
 
-            $table->dateTime('fecha');
-            $table->time('tiempo_solucion')->nullable();
+            $table->dateTime('fecha_inicio');
+            $table->dateTime('fecha_fin')->nullable();
+            $table->string('tiempo_solucion', 15)->nullable();
             $table->unsignedBigInteger('servicio_id')->nullable();
 
             $table->foreign('servicio_id')->references('id')->on('servicios')->onUpdate('cascade')->onDelete('cascade');

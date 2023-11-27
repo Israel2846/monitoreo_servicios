@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('estado_actual');
-// })->name('estado_actual');
-
 Route::controller(EstadoController::class)->group(function () {
     Route::get('/', 'dashboard')->name('estados.dashboard');
     Route::get('estado', 'enviarPing')->name('estados.enviar_ping');
@@ -36,5 +32,6 @@ Route::controller(ServicioController::class)->group(function () {
 
 Route::controller(IncidenciaController::class)->group(function () {
     Route::get('incidencia/store/{id}', 'store')->name('incidencia.store');
+    Route::get('incidencia/solution/{id}', 'solution')->name('incidencia.solution');
     Route::get('incidencia/mail', 'mail')->name('incidencia.mail');
 });

@@ -11,7 +11,12 @@
 <body>
     <h1>Correo de incidencia</h1>
 
-    <p><strong>Se cayó el servicio {{ $datos['nombre'] }}</p>
+    @if ($datos['activo'] == 0)
+        <p><strong>Se cayó el servicio {{ $datos['nombre'] }}</p>
+    @else
+        <p><strong>Se restauró el servicio {{ $datos['nombre'] }}</strong></p>
+    @endif
+
     <p><strong>Con IP {{ $datos['ip'] }}</p>
     <p><strong>Con MAC {{ $datos['mac'] }}</p>
 </body>
