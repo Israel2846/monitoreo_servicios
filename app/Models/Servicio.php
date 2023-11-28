@@ -39,7 +39,7 @@ class Servicio extends Model
     }
 
     /* Relacion 1 a muchos */
-    public function incidencias()
+    public function incidencia()
     {
         return $this->hasMany(Incidencia::class);
     }

@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Mail;
 
 class IncidenciaController extends Controller
 {
+    public function index()
+    {
+        // Consulta de todas las incidencias, ordenadas por fecha
+        $incidencias = Incidencia::orderBy('fecha_inicio', 'desc')->paginate();
+
+        // Retorno de vista con incidencias
+        return view('incidencias.index', compact('incidencias'));
+    }
+
     // Función para avisar por mail.
     public function mail($id)
     {

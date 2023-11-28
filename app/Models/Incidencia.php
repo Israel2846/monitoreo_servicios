@@ -11,7 +11,7 @@ class Incidencia extends Model
     use HasFactory;
 
     /* Relación 1 a muchos inverso */
-    public function servicios()
+    public function servicio()
     {
         return $this->belongsTo(Servicio::class);
     }

@@ -31,7 +31,8 @@ Route::controller(ServicioController::class)->group(function () {
 });
 
 Route::controller(IncidenciaController::class)->group(function () {
-    Route::get('incidencia/store/{id}', 'store')->name('incidencia.store');
-    Route::get('incidencia/solution/{id}', 'solution')->name('incidencia.solution');
-    Route::get('incidencia/mail', 'mail')->name('incidencia.mail');
+    Route::get('incidencia/store/{id}', 'store')->name('incidencias.store');
+    Route::get('incidencia/solution/{id}', 'solution')->name('incidencias.solution');
+    Route::get('incidencia/mail', 'mail')->name('incidencias.mail');
+    Route::get('incidencia/index', 'index')->name('incidencias.index');
 });
