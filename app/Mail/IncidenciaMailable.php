@@ -31,7 +31,7 @@ class IncidenciaMailable extends Mailable
     {
         return new Envelope(
             from: new Address('escanerimportacion@gmail.com', 'ALMACEN CCO AIFA'),
-            subject: 'Mensaje de prueba',
+            subject: 'SERVICIOS CCO AIFA',
         );
     }
 

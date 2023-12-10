@@ -25,7 +25,7 @@ class IncidenciaController extends Controller
     {
         $servicio = Servicio::find($id);
 
-        Mail::to(['isrel.k40@gmail.com', 'israaacolin@gmail.com'])->send(new IncidenciaMailable($servicio));
+        Mail::to(['aux-sist-aifa1@cco.com.mx', 'aux-sist-aifa2@cco.com.mx'])->send(new IncidenciaMailable($servicio));
 
         return 'Mensaje enviado con exito';
     }
